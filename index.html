@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>gunglish learning</title>
+<title>gibbylingo match 200k</title>
+
+<!-- favicon stays the same -->
 <link rel="icon" type="image/png" href="https://web.dev/static/articles/building/an-adaptive-favicon/image/example-dark-theme-favico-6a6f6f67bc3e7.png">
+
 <style>
     @font-face {
         font-family: 'Gunglish';
@@ -20,15 +23,18 @@
         min-height: 100vh;
         margin: 0;
         padding: 20px;
+
+        /* added custom cursor */
+        cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur116.cur'), auto;
     }
 
     h1 {
         margin-bottom: 20px;
-        font-size: 48px; /* bigger title */
+        font-size: 48px;
     }
 
     #sentence {
-        font-size: 32px; /* bigger sentence text */
+        font-size: 32px;
         margin-bottom: 30px;
         text-align: center;
         max-width: 90%;
@@ -42,15 +48,15 @@
     }
 
     .card {
-        width: 300px; /* bigger card */
-        height: 150px; /* taller card */
+        width: 300px;
+        height: 150px;
         background: #fff;
         border: 3px solid #f00;
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: 'Gunglish', sans-serif;
-        font-size: 28px; /* bigger card text */
+        font-size: 28px;
         text-transform: uppercase;
         cursor: pointer;
         transition: 0.3s;
@@ -64,15 +70,15 @@
     }
 
     #feedback {
-        font-size: 32px; /* bigger feedback text */
+        font-size: 32px;
         margin-top: 30px;
         height: 40px;
     }
 
     button {
         margin-top: 20px;
-        padding: 15px 25px; /* bigger button */
-        font-size: 22px; /* bigger button text */
+        padding: 15px 25px;
+        font-size: 22px;
         cursor: pointer;
         border: 2px solid #f00;
         background: #fff;
@@ -81,7 +87,7 @@
 </head>
 <body>
 
-<h1>gunglish learning</h1>
+<h1>gibbylingo match game</h1>
 <p id="sentence">Loading sentence...</p>
 
 <div class="cards">
@@ -94,12 +100,12 @@
 <button onclick="nextRound()">next sentence</button>
 
 <script>
-// generate 200,000 random sentences for demo
+// generate random sentences
 const sentences = [];
-const words = ["ball, cat, write, read, sing, dance, cold fries, Mcdonald's"];
+const words = ["hello","friend","goodbye","pal","yes","agree","no","way","hungry","i","am","you","are","we","like","go","play","fun","game"];
 
 for(let i=0;i<200000;i++){
-    let len = Math.floor(Math.random()*5)+2; // sentence length 2-6 words
+    let len = Math.floor(Math.random()*5)+2;
     let sentence = [];
     for(let j=0;j<len;j++){
         sentence.push(words[Math.floor(Math.random()*words.length)]);
@@ -109,12 +115,10 @@ for(let i=0;i<200000;i++){
 
 let currentSentence = "";
 
-// shuffle helper
 function shuffleArray(arr) {
     return arr.sort(() => Math.random() - 0.5);
 }
 
-// pick next round
 function nextRound() {
     currentSentence = sentences[Math.floor(Math.random() * sentences.length)];
     document.getElementById('sentence').innerText = currentSentence;
@@ -134,7 +138,6 @@ function nextRound() {
     document.getElementById('feedback').innerText = '';
 }
 
-// check answer
 function checkAnswer(card) {
     if(card.dataset.correct === "true") {
         document.getElementById('feedback').innerText = "✅ correct!";
@@ -143,7 +146,6 @@ function checkAnswer(card) {
     }
 }
 
-// start first round
 nextRound();
 </script>
 
